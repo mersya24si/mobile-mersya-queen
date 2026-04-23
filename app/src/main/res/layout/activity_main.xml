@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
     <LinearLayout
@@ -13,6 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Luas Persegi Panjang"
+            android:fontFamily="@font/poppins"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -20,6 +22,7 @@
             android:id="@+id/etPanjang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:hint="Masukkan Panjang"
             android:inputType="numberDecimal" />
 
@@ -27,6 +30,7 @@
             android:id="@+id/etLebar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:hint="Masukkan Lebar"
             android:inputType="numberDecimal" />
 
@@ -34,12 +38,14 @@
             android:id="@+id/btnHitungLuas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="Hitung Luas" />
 
         <TextView
             android:id="@+id/tvHasilLuas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="Hasil Luas: 0"
             android:textSize="16sp" />
 
@@ -52,6 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="Volume Kubus"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -60,6 +67,7 @@
             android:id="@+id/etSisi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:hint="Masukkan Sisi"
             android:inputType="numberDecimal" />
 
@@ -67,14 +75,32 @@
             android:id="@+id/btnHitungVolume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="Hitung Volume" />
 
         <TextView
             android:id="@+id/tvHasilVolume"
+            android:fontFamily="@font/poppins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hasil Volume: 0"
             android:textSize="16sp" />
 
+        <Button
+            android:id="@+id/btnKembali"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="#FF69B4"
+            android:text="Kembali ke Dashboard"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </LinearLayout>
+
 </ScrollView>

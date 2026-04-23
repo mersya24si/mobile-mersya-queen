@@ -1,41 +1,47 @@
-package com.example.mersya_queen // Sesuaikan dengan package name anda
+package com.example.mersya_queen // Sesuaikan dengan folder package Anda
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mersya_queen.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    // 1. Deklarasi View Binding
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        // Inisialisasi View Bangun Datar
-        val etPanjang = findViewById<EditText>(R.id.etPanjang)
-        val etLebar = findViewById<EditText>(R.id.etLebar)
-        val btnHitungLuas = findViewById<Button>(R.id.btnHitungLuas)
-        val tvHasilLuas = findViewById<TextView>(R.id.tvHasilLuas)
+        // 2. Inisialisasi Binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Inisialisasi View Bangun Ruang
-        val etSisi = findViewById<EditText>(R.id.etSisi)
-        val btnHitungVolume = findViewById<Button>(R.id.btnHitungVolume)
-        val tvHasilVolume = findViewById<TextView>(R.id.tvHasilVolume)
+        // 3. Menangkap data yang dikirim dari WelcomeActivity (Dashboard)
+        val judulDariMain = intent.getStringExtra("EXTRA_JUDUL")
+        val descDariMain = intent.getStringExtra("EXTRA_DESC")
 
-        // Logika Hitung Luas Persegi Panjang (P x L)
-        btnHitungLuas.setOnClickListener {
-            val panjang = etPanjang.text.toString().toDoubleOrNull() ?: 0.0
-            val lebar = etLebar.text.toString().toDoubleOrNull() ?: 0.0
-            val hasil = panjang * lebar
-            tvHasilLuas.text = "Hasil Luas: $hasil"
+        // Opsional: Jika Anda punya TextView untuk menampilkan info ini di layout
+        // binding.tvInfoHalaman.text = "$judulDariMain\n$descDariMain"
+
+        // --- Logika Hitung Luas Persegi Panjang (P x L) ---
+        binding.btnHitungLuas.setOnClickListener {
+            val panjang = binding.etPanjang.text.toString().toDoubleOrNull() ?: 0.0
+            val lebar = binding.etLebar.text.toString().toDoubleOrNull() ?: 0.0
+            val hasilLuas = panjang * lebar
+            binding.tvHasilLuas.text = "Hasil Luas: $hasilLuas"
         }
 
-        // Logika Hitung Volume Kubus (S x S x S)
-        btnHitungVolume.setOnClickListener {
-            val sisi = etSisi.text.toString().toDoubleOrNull() ?: 0.0
-            val hasil = sisi * sisi * sisi
-            tvHasilVolume.text = "Hasil Volume: $hasil"
+        // --- Logika Hitung Volume Kubus (S x S x S) ---
+        binding.btnHitungVolume.setOnClickListener {
+            val sisi = binding.etSisi.text.toString().toDoubleOrNull() ?: 0.0
+            val hasilVolume = sisi * sisi * sisi
+            binding.tvHasilVolume.text = "Hasil Volume: $hasilVolume"
+        }
+
+        // --- 4. Tombol Kembali ke Dashboard ---
+        binding.btnKembali.setOnClickListener {
+            // Menutup activity ini dan kembali ke halaman Welcome
+            finish()
         }
     }
 }

@@ -12,11 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mersya_queen">
         <activity
+            android:name=".tugas4.ProfilPengembangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".tugas4.ProfilAplikasiActivity"
+            android:exported="false" />
+        <activity
             android:name=".tugas3.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".tugas3.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,8 +31,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
     </application>
 
 </manifest>
