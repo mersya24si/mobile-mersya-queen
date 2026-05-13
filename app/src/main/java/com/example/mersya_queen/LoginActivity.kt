@@ -1,6 +1,5 @@
 package com.example.mersya_queen
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +10,7 @@ import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mersya_queen.databinding.ActivityLoginBinding
-import com.example.mersya_queen.tugas3.WelcomeActivity
+import com.example.mersya_queen.Home.tugas3.WelcomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
@@ -53,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     putString("username", username)
                 }
                 Toast.makeText(this, " $username Login Anda Berhasil !", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, WelcomeActivity::class.java)
+                val intent = Intent(this, BaseActivity::class.java)
                 intent.putExtra("username", binding.username.text.toString()) // Kuncinya adalah "username"
                 startActivity(intent)
             } else {

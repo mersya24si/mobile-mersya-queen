@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mersya_queen">
+        <activity
+            android:name=".BaseActivity"
+            android:exported="false" />
         <activity
             android:name=".tugas5.WebViewActivity"
             android:exported="false" />
@@ -25,13 +29,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".tugas4.ProfilPengembangActivity"
+            android:name=".Home.tugas4.ProfilPengembangActivity"
             android:exported="false" />
         <activity
-            android:name=".tugas4.ProfilAplikasiActivity"
+            android:name=".Home.tugas4.ProfilAplikasiActivity"
             android:exported="false" />
         <activity
-            android:name=".tugas3.WelcomeActivity"
+            android:name=".Home.tugas3.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

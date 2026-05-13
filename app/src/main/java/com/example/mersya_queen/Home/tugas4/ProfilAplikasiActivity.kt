@@ -1,4 +1,4 @@
-package com.example.mersya_queen.tugas4
+package com.example.mersya_queen.Home.tugas4
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

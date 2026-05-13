@@ -1,4 +1,4 @@
-package com.example.mersya_queen.tugas3
+package com.example.mersya_queen.Home.tugas3
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mersya_queen.LoginActivity
 import com.example.mersya_queen.MainActivity
-import com.example.mersya_queen.tugas4.ProfilAplikasiActivity
+import com.example.mersya_queen.Home.tugas4.ProfilAplikasiActivity
 import com.example.mersya_queen.databinding.ActivityWelcomeBinding
-import com.example.mersya_queen.tugas4.ProfilPengembangActivity
+import com.example.mersya_queen.Home.tugas4.ProfilPengembangActivity
 import com.example.mersya_queen.tugas5.WebViewActivity
 import com.google.android.material.snackbar.Snackbar
 
