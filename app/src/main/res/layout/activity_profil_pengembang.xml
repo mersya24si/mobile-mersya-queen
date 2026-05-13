@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,37 +8,32 @@
     android:background="#FDFDFD"
     tools:context=".tugas4.ProfilPengembangActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#C5AB75"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Profil Pengembang"
+        app:titleTextColor="#FFFFFF" />
+
     <View
         android:id="@+id/viewAksen"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="164dp"
         android:background="#C5AB75"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvTitleDev"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Profil Pengembang"
-        android:fontFamily="@font/poppins"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardFoto"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         app:cardCornerRadius="65dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
             android:layout_width="match_parent"
@@ -145,7 +141,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins"
                 android:justificationMode="inter_word"
-                android:text="Saya adalah mahasiswa Sistem Informasi di Politeknik Caltex Riau yang bersemangat dalam dunia mobile development. Melalui project CakePartner ini, saya ingin mempermudah pengguna dalam mengeksplorasi katalog kue favorit dengan antarmuka yang modern dan responsif."
+                android:text="Saya adalah mahasiswa Sistem Informasi di Politeknik Caltex Riau yang bersemangat dalam dunia mobile development."
                 android:textColor="#2A355A"
                 android:textSize="14sp"
                 android:lineSpacingExtra="4dp" />
@@ -158,12 +154,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
         android:fontFamily="@font/poppins"
+        android:gravity="center"
         android:text="Judul &amp; Deskripsi Dashboard"
         android:textColor="#8F9BB3"
         android:textSize="12sp"
-        android:fontStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardInfo" />

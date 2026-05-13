@@ -114,6 +114,20 @@
             app:strokeColor="#E4E7EB"
             app:strokeWidth="1dp" />
 
+        <Button
+            android:id="@+id/btnWebView"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:backgroundTint="#F8F9FA"
+            android:text="Bina Desa Produk Hukum"
+            android:fontFamily="@font/poppins"
+            android:textAllCaps="false"
+            android:textColor="#2A355A"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:strokeColor="#E4E7EB"
+            app:strokeWidth="1dp" />
+
     </LinearLayout>
 
     <Button

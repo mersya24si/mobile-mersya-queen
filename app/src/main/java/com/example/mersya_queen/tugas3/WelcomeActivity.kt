@@ -9,6 +9,7 @@ import com.example.mersya_queen.MainActivity
 import com.example.mersya_queen.tugas4.ProfilAplikasiActivity
 import com.example.mersya_queen.databinding.ActivityWelcomeBinding
 import com.example.mersya_queen.tugas4.ProfilPengembangActivity
+import com.example.mersya_queen.tugas5.WebViewActivity
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -38,6 +39,10 @@ class WelcomeActivity : AppCompatActivity() {
         // 4. Tombol Profil Pengembang
         binding.btnProfilPengembang.setOnClickListener {
             pindahHalaman(ProfilPengembangActivity::class.java)
+        }
+
+        binding.btnWebView.setOnClickListener {
+            pindahHalaman(WebViewActivity::class.java)
         }
 
         // 5. Tombol Logout dengan Konfirmasi Dialog & SnackBar

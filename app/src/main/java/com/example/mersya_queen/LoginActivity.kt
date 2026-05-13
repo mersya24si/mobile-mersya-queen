@@ -18,6 +18,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    // Tag untuk mempermudah pencarian di Logcat
     private val TAG = "LoginLifecycle"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,48 +34,43 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        // SharedPref untuk menyimpan sesi login
-        val sharedPrefLogin = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
-
-        // Logika saat tombol Login ditekan
+        //Kondisi jika isLogin bernilai true
+//        val isLogin = sharedPref.getBoolean("isLogin", false)
+//        if (isLogin) {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()//kill auth activity
+//        }
         binding.btnLogin.setOnClickListener {
-            val inputUsername = binding.username.text.toString()
-            val inputPassword = binding.password.text.toString()
+            val username = binding.username.text.toString()
+            val password = binding.password.text.toString()
 
-            // Kondisi 1: username == password (Tidak boleh kosong)
-            val kondisiSatu = (inputUsername == inputPassword) && inputUsername.isNotEmpty()
-
-            // Jika memenuhi SALAH SATU kondisi di atas
-            if (kondisiSatu) {
-                // Simpan sesi login
-                sharedPrefLogin.edit {
+            if (username == password && username.isNotEmpty() && password.isNotEmpty()) {
+                sharedPref.edit {
                     putBoolean("isLogin", true)
-                    putString("username", inputUsername)
+                    putString("username", username)
                 }
-
-                Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show()
-
-                // Arahkan ke halaman Home (BaseActivity)
+                Toast.makeText(this, " $username Login Anda Berhasil !", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, WelcomeActivity::class.java)
-                intent.putExtra("username", inputUsername)
+                intent.putExtra("username", binding.username.text.toString()) // Kuncinya adalah "username"
                 startActivity(intent)
-                finish() // Tutup halaman login agar tidak bisa di-back
-
             } else {
-                // Jika gagal, tampilkan MaterialAlertDialog
                 MaterialAlertDialogBuilder(this)
-                    .setTitle("Login Gagal")
-                    .setMessage("Username atau password salah, atau belum terdaftar. Silakan coba lagi.")
-                    .setPositiveButton("Oke") { dialog, _ ->
-                        dialog.dismiss() // Menutup dialog
+                    .setTitle("Coba Lagi")
+                    .setMessage("Silahkan Coba lagi")
+                    .setPositiveButton("Ya") { dialog, _ ->
+                        dialog.dismiss()
                     }
                     .show()
             }
         }
     }
 
+
     // --- Implementasi Lifecycle Activity ---
+
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart: Activity Mulai Terlihat")
