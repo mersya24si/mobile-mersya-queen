@@ -21,7 +21,7 @@
             android:name=".tugas3.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".tugas3.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
