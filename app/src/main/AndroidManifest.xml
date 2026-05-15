@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mersya_queen">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InputEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContohActivity"
+            android:exported="false" />
+        <activity
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
