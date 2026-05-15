@@ -108,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
 
                 MaterialAlertDialogBuilder(this)
-                    .setTitle("Login Gagal")
+                    .setTitle("Login Gagal!")
                     .setMessage("Username atau Password salah")
                     .setPositiveButton("OK", null)
                     .show()
