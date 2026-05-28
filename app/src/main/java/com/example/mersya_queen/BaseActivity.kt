@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.mersya_queen.About.AboutFragment
 import com.example.mersya_queen.Home.HomeFragment
 import com.example.mersya_queen.Profile.ProfileFragment
+import com.example.mersya_queen.Settings.SettingsFragment
 import com.example.mersya_queen.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
@@ -37,6 +38,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.profile -> {
                     replaceFragment(ProfileFragment())
+                    true
+                }
+                R.id.lvSettings -> {
+                    replaceFragment(SettingsFragment())
                     true
                 }
                else -> false // return false jika item tidak ada yang di klik

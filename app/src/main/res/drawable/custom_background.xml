@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gradient modern (Warna Gold #C5AB75) -->
+    <gradient
+        android:startColor="#C5AB75"
+        android:endColor="#A68B50"
+        android:angle="45"/>
+    <!-- Rounded corners -->
+    <corners android:radius="20dp"/>
+    <!-- Padding -->
+    <padding
+        android:left="16dp"
+        android:top="16dp"
+        android:right="16dp"
+        android:bottom="16dp"/>
+</shape>

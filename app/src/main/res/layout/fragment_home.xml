@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#F8F9FA"
     tools:context=".Home.HomeFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,14 +13,14 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#C5AB75"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Dashboard"
+        app:title="Mersya Queen Dashboard"
         app:titleTextColor="#FFFFFF" />
 
     <ImageView
         android:id="@+id/imageViewLogo"
-        android:layout_width="180dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,11 +30,11 @@
         android:id="@+id/tvWelcomeHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Selamat Datang!"
+        android:text="Selamat Datang,"
         android:textColor="#2A355A"
-        android:textSize="26sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
@@ -43,120 +43,164 @@
         android:id="@+id/tvNamaUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="sans-serif-black"
         android:text="Username"
         android:textColor="#C5AB75"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWelcomeHeader" />
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Silahkan pilih menu di bawah ini untuk menjelajahi aplikasi."
-        android:textColor="#8F9BB3"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNamaUser" />
-
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/layoutMenu"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        app:alignmentMode="alignMargins"
-        app:columnCount="2"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription">
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamaUser">
 
-        <Button
-            android:id="@+id/btnBangunRuang"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#F8F9FA"
-            android:fontFamily="@font/poppins"
-            android:text="Bangun\nRuang"
-            android:textAllCaps="false"
-            android:textColor="#2A355A"
-            android:textSize="14sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="#E4E7EB"
-            app:strokeWidth="1dp" />
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/layoutMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:alignmentMode="alignMargins"
+            app:columnCount="2">
 
-        <Button
-            android:id="@+id/btnProfilAplikasi"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#F8F9FA"
-            android:fontFamily="@font/poppins"
-            android:text="Profil\nAplikasi"
-            android:textAllCaps="false"
-            android:textColor="#2A355A"
-            android:textSize="14sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="#E4E7EB"
-            app:strokeWidth="1dp" />
+            <!-- Menu Bangun Ruang -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBangunRuang"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_edit"
+                        app:tint="#C5AB75" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bangun Ruang"
+                        android:textColor="#2A355A"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnProfilPengembang"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#F8F9FA"
-            android:fontFamily="@font/poppins"
-            android:text="Profil\nPengembang"
-            android:textAllCaps="false"
-            android:textColor="#2A355A"
-            android:textSize="14sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="#E4E7EB"
-            app:strokeWidth="1dp" />
+            <!-- Menu Data Warga (BARU) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDataWarga"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        app:tint="#C5AB75" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Warga"
+                        android:textStyle="bold"
+                        android:textColor="#2A355A"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnWebView"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            android:backgroundTint="#F8F9FA"
-            android:fontFamily="@font/poppins"
-            android:text="Bina Desa\nProduk Hukum"
-            android:textAllCaps="false"
-            android:textColor="#2A355A"
-            android:textSize="14sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="#E4E7EB"
-            app:strokeWidth="1dp" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfilAplikasi"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_info_details"
+                        app:tint="#C5AB75" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profil Aplikasi"
+                        android:textColor="#2A355A"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-    </androidx.gridlayout.widget.GridLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfilPengembang"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_view"
+                        app:tint="#C5AB75" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pengembang"
+                        android:textColor="#2A355A"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.gridlayout.widget.GridLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#C5AB75"
-        android:fontFamily="@font/poppins"
         android:text="Logout"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
