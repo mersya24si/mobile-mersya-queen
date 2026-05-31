@@ -60,168 +60,144 @@
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
         app:layout_constraintTop_toBottomOf="@+id/tvNamaUser">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardTugas10"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@android:drawable/ic_menu_agenda"
-                    app:tint="#C5AB75" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tugas 10"
-                    android:textColor="#2A355A"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="4dp" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/layoutMenu"
+        <!-- HANYA SATU ANAK: LinearLayout membungkus segalanya -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            app:alignmentMode="alignMargins"
-            app:columnCount="2">
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <!-- Menu Bangun Ruang -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardBangunRuang"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:strokeWidth="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@android:drawable/ic_menu_edit"
-                        app:tint="#C5AB75" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bangun Ruang"
-                        android:textColor="#2A355A"
-                        android:textSize="12sp"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/layoutMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:alignmentMode="alignMargins"
+                app:columnCount="2">
 
-            <!-- Menu Data Warga (BARU) -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardDataWarga"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                app:strokeWidth="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@android:drawable/ic_menu_myplaces"
-                        app:tint="#C5AB75" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data Warga"
-                        android:textStyle="bold"
-                        android:textColor="#2A355A"
-                        android:textSize="12sp"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                <!-- Menu Tugas 10 (Sekarang di dalam Grid) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardLayanan"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_menu_agenda"
+                            app:tint="#C5AB75" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Layanan"
+                            android:textColor="#2A355A"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardProfilAplikasi"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:strokeWidth="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@android:drawable/ic_menu_info_details"
-                        app:tint="#C5AB75" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Profil Aplikasi"
-                        android:textColor="#2A355A"
-                        android:textSize="12sp"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                <!-- Menu Data Warga -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDataWarga"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:strokeWidth="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            app:tint="#C5AB75" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data Warga"
+                            android:textStyle="bold"
+                            android:textColor="#2A355A"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardProfilPengembang"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:strokeWidth="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@android:drawable/ic_menu_view"
-                        app:tint="#C5AB75" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pengembang"
-                        android:textColor="#2A355A"
-                        android:textSize="12sp"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                <!-- Menu Bangun Ruang -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBangunRuang"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_menu_edit"
+                            app:tint="#C5AB75" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bangun Ruang"
+                            android:textColor="#2A355A"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        </androidx.gridlayout.widget.GridLayout>
+                <!-- Menu Profil Aplikasi -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardProfilAplikasi"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_menu_info_details"
+                            app:tint="#C5AB75" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Profil Aplikasi"
+                            android:textColor="#2A355A"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.gridlayout.widget.GridLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <Button

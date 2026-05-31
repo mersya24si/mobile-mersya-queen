@@ -8,12 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.mersya_queen.Home.tugas10.LayananActivity
 import com.example.mersya_queen.Home.tugas4.ProfilAplikasiActivity
 import com.example.mersya_queen.Home.tugas4.ProfilPengembangActivity
-import com.example.mersya_queen.Home.tugas10.Tugas10Activity
 import com.example.mersya_queen.Home.tugas9.DataWarga.DataWargaFragment
 import com.example.mersya_queen.LoginActivity
 import com.example.mersya_queen.MainActivity
+import com.example.mersya_queen.R
 import com.example.mersya_queen.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -50,14 +51,14 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), ProfilAplikasiActivity::class.java))
         }
 
-        binding.cardProfilPengembang.setOnClickListener {
-            startActivity(Intent(requireContext(), ProfilPengembangActivity::class.java))
+        binding.cardLayanan.setOnClickListener {
+            startActivity(Intent(requireContext(), LayananActivity::class.java))
         }
 
-        // 🟢 FIX YANG KAMU MINTA (TUGAS 10)
-        binding.cardTugas10.setOnClickListener {
-            startActivity(Intent(requireContext(), Tugas10Activity::class.java))
-        }
+//        binding.cardProfilPengembang.setOnClickListener {
+//            startActivity(Intent(requireContext(), ProfilPengembangActivity::class.java))
+//        }
+
 
         // Fragment Data Warga lama (biarkan kalau masih dipakai)
         binding.cardDataWarga.setOnClickListener {
