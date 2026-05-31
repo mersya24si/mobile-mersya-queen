@@ -63,7 +63,7 @@ class DataWargaFragment : Fragment() {
 
             // Validasi Input
             var isValid = true
-            
+
             if (nama.isEmpty()) {
                 binding.tilNama.error = "Nama tidak boleh kosong"
                 isValid = false

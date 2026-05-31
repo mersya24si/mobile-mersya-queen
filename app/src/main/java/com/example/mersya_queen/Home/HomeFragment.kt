@@ -10,13 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.mersya_queen.Home.tugas4.ProfilAplikasiActivity
 import com.example.mersya_queen.Home.tugas4.ProfilPengembangActivity
+import com.example.mersya_queen.Home.tugas10.Tugas10Activity
 import com.example.mersya_queen.Home.tugas9.DataWarga.DataWargaFragment
 import com.example.mersya_queen.LoginActivity
 import com.example.mersya_queen.MainActivity
-import com.example.mersya_queen.R
 import com.example.mersya_queen.databinding.FragmentHomeBinding
-import com.example.mersya_queen.tugas5.WebViewActivity
-import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
 
@@ -34,25 +32,38 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup Toolbar
+        // Toolbar
         val toolbar = binding.toolbar
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
         (activity as AppCompatActivity).supportActionBar?.title = "Mersya Queen"
 
-        // Menampilkan username
+        // Username
         val username = arguments?.getString("EXTRA_USERNAME") ?: "Pengguna"
         binding.tvNamaUser.text = username
 
-        // 1. Navigasi ke Activity yang sudah ada
-        binding.cardBangunRuang.setOnClickListener { pindahHalaman(MainActivity::class.java) }
-        binding.cardProfilAplikasi.setOnClickListener { pindahHalaman(ProfilAplikasiActivity::class.java) }
-        binding.cardProfilPengembang.setOnClickListener { pindahHalaman(ProfilPengembangActivity::class.java) }
-        
-        // 2. Navigasi ke DataWargaFragment (Fragment Baru)
+        // Navigasi Activity
+        binding.cardBangunRuang.setOnClickListener {
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+        }
+
+        binding.cardProfilAplikasi.setOnClickListener {
+            startActivity(Intent(requireContext(), ProfilAplikasiActivity::class.java))
+        }
+
+        binding.cardProfilPengembang.setOnClickListener {
+            startActivity(Intent(requireContext(), ProfilPengembangActivity::class.java))
+        }
+
+        // 🟢 FIX YANG KAMU MINTA (TUGAS 10)
+        binding.cardTugas10.setOnClickListener {
+            startActivity(Intent(requireContext(), Tugas10Activity::class.java))
+        }
+
+        // Fragment Data Warga lama (biarkan kalau masih dipakai)
         binding.cardDataWarga.setOnClickListener {
             val fragment = DataWargaFragment()
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment) // Ganti R.id.fragment_container dengan ID container di activity_base/main Anda
+                .replace(R.id.fragment_container, fragment)
                 .addToBackStack(null)
                 .commit()
         }
@@ -60,11 +71,6 @@ class HomeFragment : Fragment() {
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmation()
         }
-    }
-
-    private fun pindahHalaman(targetActivity: Class<*>) {
-        val intent = Intent(requireContext(), targetActivity)
-        startActivity(intent)
     }
 
     private fun showLogoutConfirmation() {
