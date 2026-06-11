@@ -7,12 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.mersya_queen.Home.tugas3.WelcomeActivity
+import com.example.mersya_queen.tutorial.OnboardingActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashScreenActivity : AppCompatActivity() {
-    private class binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,20 +21,19 @@ class SplashScreenActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-
-        //Kondisi jika isLogin bernilai true
         val isLogin = sharedPref.getBoolean("isLogin", false)
-        if (isLogin) {
-            val intent = Intent(this, BaseActivity::class.java)
-            startActivity(intent)
-            finish()//kill auth activity
-        }
-        lifecycleScope.launch {
-            delay(2000) //simulasi pengambilan data selama 2 detik
 
-            var intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
-            startActivity(intent)
+        lifecycleScope.launch {
+            delay(2000) // simulasi loading
+            
+            if (isLogin) {
+                startActivity(Intent(this@SplashScreenActivity, BaseActivity::class.java))
+            } else {
+                // Berpindah ke OnboardingActivity (Tutorial) jika belum login
+                startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
+            }
             finish()
         }
     }
