@@ -1,17 +1,29 @@
 package com.example.mersya_queen.Home.tugas9.DataWarga
 
+import android.Manifest
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.mersya_queen.R
 import com.example.mersya_queen.databinding.FragmentDataWargaBinding
+import com.example.mersya_queen.utils.NotificationHelper
+import com.example.mersya_queen.utils.PermissionHelper
 import com.google.android.material.chip.Chip
 
 class DataWargaFragment : Fragment() {
 
     private var _binding: FragmentDataWargaBinding? = null
     private val binding get() = _binding!!
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(requireContext(), "Notifikasi diizinkan", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Notifikasi ditolak", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     // List data menggunakan model Warga
     private val listWarga = mutableListOf<Warga>()
@@ -23,6 +35,20 @@ class DataWargaFragment : Fragment() {
     ): View {
         _binding = FragmentDataWargaBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (PermissionHelper.isNotificationPermissionRequired()) {
+            val permission = Manifest.permission.POST_NOTIFICATIONS
+            if (!PermissionHelper.hasPermission(requireContext(), permission)) {
+                PermissionHelper.requestPermission(
+                    notificationPermissionLauncher,
+                    permission
+                )
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +80,6 @@ class DataWargaFragment : Fragment() {
         binding.btnSimpan.setOnClickListener {
             val nama = binding.etNama.text.toString().trim()
             val nik = binding.etNik.text.toString().trim()
-            
             // Mengambil status dari Chip yang dipilih
             val selectedChipId = binding.cgStatus.checkedChipId
             val status = if (selectedChipId != -1) {
@@ -94,6 +119,12 @@ class DataWargaFragment : Fragment() {
 
                 // Reset Form
                 clearForm()
+                NotificationHelper.showNotification(
+                    requireContext(),
+                    "Data Warga",
+                    "Halo $nama, data warga berhasil ditambahkan",
+                    requireActivity().intent
+                )
                 Toast.makeText(requireContext(), "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
                 
                 // Scroll ke data terbaru
