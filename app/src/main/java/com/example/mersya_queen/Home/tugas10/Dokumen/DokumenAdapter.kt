@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mersya_queen.databinding.ItemDokumenBinding
 
-class DokumenAdapter(private val listDokumen: List<DokumenModel>) :
-    RecyclerView.Adapter<DokumenAdapter.ViewHolder>() {
+class DokumenAdapter(
+    private val listDokumen: List<DokumenModel>,
+    private val onItemClick: (DokumenModel) -> Unit
+) : RecyclerView.Adapter<DokumenAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemDokumenBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -26,6 +28,10 @@ class DokumenAdapter(private val listDokumen: List<DokumenModel>) :
             tvDeskripsiDokumen.text = item.deskripsi
             tvTanggalDokumen.text = item.tanggal
             ivDokumen.setImageResource(item.imageResId)
+
+            root.setOnClickListener {
+                onItemClick(item)
+            }
         }
     }
 

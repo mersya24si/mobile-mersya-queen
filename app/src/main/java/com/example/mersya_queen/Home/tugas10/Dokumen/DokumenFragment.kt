@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mersya_queen.MainActivity
 import com.example.mersya_queen.databinding.FragmentDokumenBinding
+import com.example.mersya_queen.utils.ReminderHelper
+import java.util.Calendar
 
 class DokumenFragment : Fragment() {
 
@@ -43,7 +47,27 @@ class DokumenFragment : Fragment() {
         )
 
         // Inisialisasi Adapter dan LayoutManager
-        val adapter = DokumenAdapter(listDokumen)
+        val adapter = DokumenAdapter(listDokumen) { dokumen ->
+            // Implementasi Reminder saat item diklik
+            val calendar = Calendar.getInstance().apply {
+                add(Calendar.MINUTE, 1) // Tambah 1 menit dari sekarang
+            }
+
+            ReminderHelper.setReminder(
+                context = requireContext(),
+                hour = calendar.get(Calendar.HOUR_OF_DAY),
+                minute = calendar.get(Calendar.MINUTE),
+                title = "Pengingat Dokumen",
+                message = "Waktunya meninjau kembali: ${dokumen.nama}",
+                targetActivity = MainActivity::class.java
+            )
+
+            Toast.makeText(
+                requireContext(),
+                "Pengingat untuk '${dokumen.nama}' disetel 1 menit dari sekarang",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
         binding.rvDokumen.apply {
             layoutManager = LinearLayoutManager(requireContext())
             this.adapter = adapter
