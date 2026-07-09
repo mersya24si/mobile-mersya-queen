@@ -16,6 +16,11 @@
         android:title="Profile" />
 
     <item
+        android:id="@+id/note"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Note" />
+
+    <item
         android:id="@+id/lvSettings"
         android:icon="@drawable/ic_settings"
         android:title="Settigs" />

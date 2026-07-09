@@ -1,5 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.ksp)
+}
+
+ksp {
+    arg("room.generateKotlin", "true")
 }
 
 android {
@@ -51,4 +56,21 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // ZXing for QR Code Generation
+    implementation("com.google.zxing:core:3.5.2")
+
+    // CameraX
+    val cameraVersion = "1.3.3"
+    implementation("androidx.camera:camera-camera2:$cameraVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraVersion")
+    implementation("androidx.camera:camera-view:$cameraVersion")
+
+    // ML Kit for QR code scanning
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 }

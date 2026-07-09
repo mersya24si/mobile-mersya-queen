@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.mersya_queen.About.AboutFragment
 import com.example.mersya_queen.Home.HomeFragment
+import com.example.mersya_queen.note.NoteFragment
 import com.example.mersya_queen.Profile.ProfileFragment
 import com.example.mersya_queen.Settings.SettingsFragment
 import com.example.mersya_queen.databinding.ActivityBaseBinding
@@ -38,6 +39,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.profile -> {
                     replaceFragment(ProfileFragment())
+                    true
+                }
+                R.id.note -> {
+                    replaceFragment(NoteFragment())
                     true
                 }
                 R.id.lvSettings -> {

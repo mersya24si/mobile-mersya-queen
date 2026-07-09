@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mersya_queen.Home.photo.PhotoAdapter
+import com.example.mersya_queen.Home.pertemuan_13.ThirteenthActivity
 import com.example.mersya_queen.Home.tugas10.LayananActivity
 import com.example.mersya_queen.Home.tugas4.ProfilAplikasiActivity
 import com.example.mersya_queen.Home.tugas9.DataWarga.DataWargaFragment
@@ -58,6 +59,7 @@ class HomeFragment : Fragment() {
         binding.cardBangunRuang.setOnClickListener { startActivity(Intent(requireContext(), MainActivity::class.java)) }
         binding.cardProfilAplikasi.setOnClickListener { startActivity(Intent(requireContext(), ProfilAplikasiActivity::class.java)) }
         binding.cardLayanan.setOnClickListener { startActivity(Intent(requireContext(), LayananActivity::class.java)) }
+        binding.cardPertemuan13.setOnClickListener { startActivity(Intent(requireContext(), ThirteenthActivity::class.java)) }
         binding.cardDataWarga.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, DataWargaFragment())

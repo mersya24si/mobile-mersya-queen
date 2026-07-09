@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import com.example.mersya_queen.data.entity.WargaEntity
 import com.example.mersya_queen.databinding.ItemWargaBinding
 
-class WargaAdapter(context: Context, private val resource: Int, private val items: List<Warga>) :
-    ArrayAdapter<Warga>(context, resource, items) {
+class WargaAdapter(context: Context, private val resource: Int, private val items: List<WargaEntity>) :
+    ArrayAdapter<WargaEntity>(context, resource, items) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val binding: ItemWargaBinding

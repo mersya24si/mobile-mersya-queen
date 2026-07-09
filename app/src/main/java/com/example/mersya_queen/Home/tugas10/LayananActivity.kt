@@ -51,6 +51,10 @@ class LayananActivity : AppCompatActivity() {
                     badge.isVisible = true
                     badge.number = 5
                 }
+                2 -> {
+                    tab.text = "Scan QR"
+                    tab.icon = ContextCompat.getDrawable(this, android.R.drawable.ic_menu_camera)
+                }
             }
         }.attach()
     }

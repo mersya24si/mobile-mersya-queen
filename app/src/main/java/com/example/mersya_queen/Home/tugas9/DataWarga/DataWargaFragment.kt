@@ -6,11 +6,15 @@ import android.view.*
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.mersya_queen.R
+import com.example.mersya_queen.data.AppDatabase
+import com.example.mersya_queen.data.entity.WargaEntity
 import com.example.mersya_queen.databinding.FragmentDataWargaBinding
 import com.example.mersya_queen.utils.NotificationHelper
 import com.example.mersya_queen.utils.PermissionHelper
 import com.google.android.material.chip.Chip
+import kotlinx.coroutines.launch
 
 class DataWargaFragment : Fragment() {
 
@@ -25,8 +29,8 @@ class DataWargaFragment : Fragment() {
             }
         }
 
-    // List data menggunakan model Warga
-    private val listWarga = mutableListOf<Warga>()
+    private lateinit var db: AppDatabase
+    private val listWarga = mutableListOf<WargaEntity>()
     private lateinit var wargaAdapter: WargaAdapter
 
     override fun onCreateView(
@@ -54,39 +58,40 @@ class DataWargaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Perbaikan: Tambahkan listener untuk tombol back di toolbar agar bisa kembali
+        db = AppDatabase.getInstance(requireContext())
+
         binding.toolbar.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
         setupListView()
         setupAction()
+        fetchData()
     }
 
     private fun setupListView() {
-        // Inisialisasi Custom Adapter
         wargaAdapter = WargaAdapter(requireContext(), R.layout.item_warga, listWarga)
         binding.lvWarga.adapter = wargaAdapter
+    }
 
-        // Data Dummy Awal (Hanya jika list masih kosong)
-        if (listWarga.isEmpty()) {
-            listWarga.add(Warga("Budi Santoso", "3201234567890001", "Kepala Keluarga"))
-            listWarga.add(Warga("Siti Aminah", "3201234567890002", "Istri"))
+    private fun fetchData() {
+        lifecycleScope.launch {
+            val data = db.wargaDao().getAll()
+            listWarga.clear()
+            listWarga.addAll(data)
+            wargaAdapter.notifyDataSetChanged()
         }
-        wargaAdapter.notifyDataSetChanged()
     }
 
     private fun setupAction() {
         binding.btnSimpan.setOnClickListener {
             val nama = binding.etNama.text.toString().trim()
             val nik = binding.etNik.text.toString().trim()
-            // Mengambil status dari Chip yang dipilih
             val selectedChipId = binding.cgStatus.checkedChipId
             val status = if (selectedChipId != -1) {
                 binding.root.findViewById<Chip>(selectedChipId).text.toString()
             } else ""
 
-            // Validasi Input
             var isValid = true
 
             if (nama.isEmpty()) {
@@ -112,23 +117,23 @@ class DataWargaFragment : Fragment() {
             }
 
             if (isValid) {
-                // Simpan ke List dan Update Adapter
-                val wargaBaru = Warga(nama, nik, status)
-                listWarga.add(wargaBaru)
-                wargaAdapter.notifyDataSetChanged()
+                lifecycleScope.launch {
+                    val wargaBaru = WargaEntity(nama = nama, nik = nik, status = status)
+                    db.wargaDao().insert(wargaBaru)
+                    
+                    fetchData()
+                    clearForm()
 
-                // Reset Form
-                clearForm()
-                NotificationHelper.showNotification(
-                    requireContext(),
-                    "Data Warga",
-                    "Halo $nama, data warga berhasil ditambahkan",
-                    requireActivity().intent
-                )
-                Toast.makeText(requireContext(), "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
-                
-                // Scroll ke data terbaru
-                binding.lvWarga.smoothScrollToPosition(listWarga.size - 1)
+                    NotificationHelper.showNotification(
+                        requireContext(),
+                        "Data Warga",
+                        "Halo $nama, data warga berhasil ditambahkan",
+                        requireActivity().intent
+                    )
+                    Toast.makeText(requireContext(), "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
+                    
+                    binding.lvWarga.smoothScrollToPosition(listWarga.size - 1)
+                }
             }
         }
     }
