@@ -22,6 +22,7 @@ import com.example.mersya_queen.MainActivity
 import com.example.mersya_queen.R
 import com.example.mersya_queen.data.api.PhotoApiClient
 import com.example.mersya_queen.databinding.FragmentHomeBinding
+import com.example.mersya_queen.tugas5.WebViewActivity
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -60,6 +61,8 @@ class HomeFragment : Fragment() {
         binding.cardProfilAplikasi.setOnClickListener { startActivity(Intent(requireContext(), ProfilAplikasiActivity::class.java)) }
         binding.cardLayanan.setOnClickListener { startActivity(Intent(requireContext(), LayananActivity::class.java)) }
         binding.cardPertemuan13.setOnClickListener { startActivity(Intent(requireContext(), ThirteenthActivity::class.java)) }
+        binding.cardWebView.setOnClickListener { startActivity(Intent(requireContext(),
+            WebViewActivity::class.java)) }
         binding.cardDataWarga.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, DataWargaFragment())

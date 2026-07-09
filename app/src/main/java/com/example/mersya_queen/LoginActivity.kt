@@ -13,25 +13,16 @@ import com.example.mersya_queen.databinding.ActivityLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class LoginActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityLoginBinding
-
-    // Tag Logcat
     private val TAG = "LoginLifecycle"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         Log.d(TAG, "onCreate: Activity Dibuat")
-
         binding = ActivityLoginBinding.inflate(layoutInflater)
-
         enableEdgeToEdge()
-
         setContentView(binding.root)
-
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-
             val systemBars =
                 insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
@@ -54,20 +45,16 @@ class LoginActivity : AppCompatActivity() {
         // =========================
 
         binding.btnLogin.setOnClickListener {
-
             val username =
                 binding.username.text.toString().trim()
-
             val password =
                 binding.password.text.toString().trim()
 
             // SharedPreferences Register
             val registerPref =
                 getSharedPreferences("register_pref", MODE_PRIVATE)
-
             val savedUsername =
                 registerPref.getString("username", "")
-
             val savedPassword =
                 registerPref.getString("password", "")
 
@@ -84,14 +71,10 @@ class LoginActivity : AppCompatActivity() {
 
             // Jika salah satu benar
             if (loginPraktikum || loginRegister) {
-
                 sharedPref.edit {
-
                     putBoolean("isLogin", true)
-
                     putString("username", username)
                 }
-
                 Toast.makeText(
                     this,
                     "Login Berhasil!",
@@ -100,13 +83,9 @@ class LoginActivity : AppCompatActivity() {
 
                 val intent =
                     Intent(this, BaseActivity::class.java)
-
                 intent.putExtra("username", username)
-
                 startActivity(intent)
-
             } else {
-
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Login Gagal!")
                     .setMessage("Username atau Password salah")
@@ -127,20 +106,12 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-    // =========================
-    // LIFECYCLE
-    // =========================
-
     override fun onStart() {
         super.onStart()
-
         Log.d(TAG, "onStart: Activity Mulai Terlihat")
     }
-
     override fun onDestroy() {
         super.onDestroy()
-
         Log.d(TAG, "onDestroy: Activity Dihancurkan")
     }
 }
